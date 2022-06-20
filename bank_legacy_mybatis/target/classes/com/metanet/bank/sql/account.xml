@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<mapper namespace="mapper.account">
+	<insert id="insertAccount" parameterType="com.metanet.bank.dto.Account">
+		<![CDATA[
+			insert into account(id, name, balance) values (#{id}, #{name}, #{balance})
+		]]>
+	</insert>
+	
+	<select id="selectAccount" resultType="com.metanet.bank.dto.Account" parameterType="String">
+		<![CDATA[
+			select * from account where id= #{id}
+		]]>
+	</select>
+	
+	<select id="selectAll" resultType="com.metanet.bank.dto.Account">
+		<![CDATA[
+			select * from account order by id
+		]]>
+	</select>
+	
+	<update id="updateAccount" parameterType="com.metanet.bank.dto.Account">
+		<![CDATA[
+				update account set balance=#{balance} where id=#{id}
+			]]>
+	</update>
+	
+</mapper>
